@@ -12,6 +12,6 @@ class RoomClient {
     ).fallbackToDestructiveMigration()
         .build()
 
-    fun provideUserDao(userDataBase: AppDataBase): UserDao = userDataBase.messDao()
+    fun provideUserDao(userDataBase: AppDataBase): UserDao = userDataBase.userDao()
 
 }
