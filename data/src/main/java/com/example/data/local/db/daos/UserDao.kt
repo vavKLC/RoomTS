@@ -1,14 +1,15 @@
 package com.example.data.local.db.daos
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.data.model.UserDto
+import com.example.domain.either.Either
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
 
     @Query("SELECT * FROM userdto")
-    suspend fun getUsers(): LiveData<List<UserDto>>
+    suspend fun getUsers(): Flow<Either<String,List<UserDto>>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertUser(userDto: UserDto)
