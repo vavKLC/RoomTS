@@ -8,7 +8,7 @@ class RoomClient {
     fun provideCreateAppDataBase(context: Context) = Room.databaseBuilder(
         context,
         AppDataBase::class.java,
-        "database-name"
+        "database"
     ).fallbackToDestructiveMigration()
         .build()
 
