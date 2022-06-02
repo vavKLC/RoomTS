@@ -7,7 +7,7 @@ class GetUsersRepository @Inject constructor(
     private val userRepository: UserRepository
 ) {
 
-    suspend operator fun invoke() =
+    operator fun invoke() =
         userRepository.getUsers()
 
 }
