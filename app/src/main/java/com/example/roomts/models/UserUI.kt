@@ -9,3 +9,5 @@ data class UserUI(
 
 fun UserModel.toUI() =
     UserUI(id, userName)
+fun UserUI.toDomain() =
+    UserModel(id,userName)
