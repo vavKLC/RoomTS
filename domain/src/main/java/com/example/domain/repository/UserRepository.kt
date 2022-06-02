@@ -5,6 +5,6 @@ import com.example.domain.models.UserModel
 
 
 interface UserRepository {
-    suspend fun getUsers(): kotlinx.coroutines.flow.Flow<Either<String, List<UserModel>>>
+    fun getUsers(): kotlinx.coroutines.flow.Flow<List<UserModel>>
     suspend fun insertAllUser(userModel: UserModel)
 }
