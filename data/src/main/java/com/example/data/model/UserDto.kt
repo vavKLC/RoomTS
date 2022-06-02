@@ -13,3 +13,5 @@ data class UserDto(
 
 fun UserDto.toDomain() =
     UserModel(id, userName)
+
+fun UserModel.toData() = UserDto(id, userName)
