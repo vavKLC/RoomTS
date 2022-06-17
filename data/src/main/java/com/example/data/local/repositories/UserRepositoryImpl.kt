@@ -15,7 +15,7 @@ class UserRepositoryImpl @Inject constructor(
     override fun getUsers(): Flow<List<UserModel>> =
         userDao.getUsers().map { it -> it.map { it.toDomain() } }
 
-    override suspend fun insertAllUser(userModel: UserModel) {
+    override fun insertAllUser(userModel: UserModel) {
         userDao.insertUser(userModel.toData())
     }
 

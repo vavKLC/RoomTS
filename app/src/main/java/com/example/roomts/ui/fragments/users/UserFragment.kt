@@ -1,27 +1,41 @@
 package com.example.roomts.ui.fragments.users
 
-import android.os.Bundle
-import android.provider.SyncStateContract.Helpers.insert
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.roomts.R
 import com.example.roomts.base.BaseFragment
 import com.example.roomts.databinding.FragmentUserBinding
+import com.example.roomts.extensions.submitData
 import com.example.roomts.models.UserUI
+import com.example.roomts.ui.adapters.UserAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UserFragment(
-    private val userUI: UserUI
-) : BaseFragment<FragmentUserBinding,UserViewModel>(
+) : BaseFragment<FragmentUserBinding, UserViewModel>(
     R.layout.fragment_user
 ) {
     override val binding by viewBinding(FragmentUserBinding::bind)
     override val viewModel: UserViewModel by viewModels()
+    private val userAdapter = UserAdapter()
 
-    override fun launchObservers() {
-        viewModel.getUser()
+    override fun initialize() {
+        binding.btnAdd.setOnClickListener {
+            insertData()
+        }
+        setupAdapter()
     }
+
+    private fun setupAdapter() = with(binding.recyclerView) {
+        adapter = userAdapter
+
+    }
+
+    private fun insertData() {
+        val userName = binding.etText.text.toString()
+        val user = UserUI(0, userName)
+        viewModel.insert(user)
+        userAdapter.submitData(user)
+    }
+
 }

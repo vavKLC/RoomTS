@@ -3,7 +3,7 @@ package com.example.domain.usecases
 import com.example.domain.repository.UserRepository
 import javax.inject.Inject
 
-class GetUsersRepository @Inject constructor(
+class GetUsersUseCase @Inject constructor(
     private val userRepository: UserRepository
 ) {
 
