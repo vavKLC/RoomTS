@@ -11,9 +11,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class UserViewModel(
+class UserViewModel @Inject constructor(
     private val getUsersUseCase: GetUsersUseCase,
     private val insertUserUseCase: InsertUserUseCase
 ) : BaseViewModel() {
