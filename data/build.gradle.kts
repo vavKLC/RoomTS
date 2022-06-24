@@ -47,7 +47,8 @@ dependencies {
     api(libs.paging.paging)
 
     // Room with coroutines
-    implementation(libs.bundles.room)
+    api(libs.bundles.room)
     kapt(libs.room.compiler)
+
 
 }
