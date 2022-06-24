@@ -74,4 +74,8 @@ dependencies {
 
     // Paging 3
     implementation(libs.paging.paging)
+
+    // Room with coroutines
+    implementation(libs.bundles.room)
+    kapt(libs.room.compiler)
 }
